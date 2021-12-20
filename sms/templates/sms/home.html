@@ -1,5 +1,5 @@
 {% load hitcount_tags %}
-
+{% load static %}
 <html lang="en" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -213,9 +213,8 @@ margin: 2px;
     <a class="" href="{% url 'sms:commentlistview' %}">Feedbacks</a>
     {% endif %}
     
-    <a class="" href="{% url 'sms:logout' %}">Log out</a>
+    <a class="" href="{% url 'account_logout' %}">Log out</a>
     <a class="" href="https://wa.me/message/3WEEV2BGDKKSG1"> Live Help <i class="fas fa-question-circle"></i> </a>
-    <a  class="" href="{% url 'sms:feedbackformview' %}">Feedback Form</a>
     <a  class="" href="?">{{comment_count}} : Feedback (s)</a>
     
 </div>
@@ -231,18 +230,19 @@ margin: 2px;
             
             <a class="navbar-brand" href="#page-top"><img src="/static/sms/images/newlogo3.jpg" width="50px" height="50px" alt="..."></a>
             <div style="color: wheat; text-align: cente">
-                 
+              {% for u in user %}
                 <script>
                     Swal.fire({
                     position: 'top-end',
                     icon: 'success',
                     height: 10,
                     width: 205,
-                    title: 'welcome {{user}}',
+                    title: 'welcome {{u.username}}',
                     showConfirmButton: false,
                     timer: 5500
                           })
                     </script>
+                    {% endfor %}
             </div>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -261,7 +261,8 @@ margin: 2px;
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                     <hr>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li><hr>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'sms:logout' %}">Log out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log out</a></li><hr>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sms:userprofilelistview' %}">My Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -329,7 +330,7 @@ margin: 2px;
                     <h1><a class="category-head" style="color: rgb(16, 2, 37);" href="{% url 'sms:courseslist' category.pk %}">{{category}}</a></h1><hr>
                     <div class="">{% get_hit_count for category %} <i class="fas fa-eye"></i> </div><hr>
                     <div class="">{{category.created}}</div><br>
-                    <div class="">{{category.desc}}</div><hr>
+                    <div class="text-left">{{category.desc}}</div><hr>
                    
                     {% empty %}
             <h1 class="card text-center text-danger">No Courses Available Yet. CHECK LATER</h1>
@@ -337,7 +338,6 @@ margin: 2px;
                
                 </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@ margin: 2px;
         </div>
       </div>
     </div>
-<hr>
+
 <div class="col-sm-3">
     <div class="card">
       <div class="card-body">
@@ -366,7 +366,7 @@ margin: 2px;
     </div>
   </div>
           
-   
+  
     <!-- Team-->
     <section style="background-color: blue;color: wheat;" class="page-section " id="team">
         <div class="container">
@@ -378,14 +378,14 @@ margin: 2px;
                 <div class="col-lg-4">
                     <div class="team-member">
                         <img class="mx-auto rounded-circle" src="/static/sms/assets/img/team/myphoto.jpg" alt="...">
-                        <h4>Ahmed Dauda AD</h4>
+                        <h4>Ahmed Dauda</h4>
                         <p class="text-muted">Lead Developer and Co-founder</p>
                         
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="/static/sms/assets/img/team/2.jpg" alt="...">
+                        <img class="mx-auto rounded-circle" src="/static/sms/assets/img/team/robot.jpeg" alt="...">
                         <h4>Diana Petersen</h4>
                         <p class="text-muted">Lead Marketer</p>
                     
@@ -394,7 +394,7 @@ margin: 2px;
                 </div>
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="/static/sms/assets/img/team/3.jpg" alt="...">
+                        <img class="mx-auto rounded-circle" src="/static/sms/assets/img/team/coding.jpeg" alt="...">
                         <h4>Larry Parker</h4>
                         <p class="text-muted">Lead Developer</p>
                           

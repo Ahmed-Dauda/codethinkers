@@ -5,8 +5,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
 
-# from django.contrib.auth import get_user_model
-# User = get_user_model()
+
 
 from hitcount.models import HitCount, HitCountMixin
 
@@ -74,11 +73,11 @@ class Topics(models.Model):
 
 class Comment(models.Model):
     
-    # user_name = models.ForeignKey(User, on_delete= models.CASCADE)
-    first_name = models.CharField(max_length=225, blank=True, null= True)
+    username = models.CharField(default='fff', max_length=225, blank=True, null= True, unique=True)
+    first_name = models.CharField(default='fff', max_length=225, blank=True, null= True)
     last_name = models.CharField(max_length=225, blank=True, null= True)
     title = models.CharField(max_length=225,  null=True, blank =True )
-    desc = models.TextField(blank=True, null= True)
+    desc = models.TextField(max_length=500, blank=True, null= True)
     created = models.DateTimeField(auto_now_add=True,blank=True, null= True)
     updated = models.DateTimeField(auto_now=True, blank=True, null= True)
     # id = models.BigAutoField(primary_key=True)

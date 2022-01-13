@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sites', # make sure sites is included
     'users',
     'sms',
+    'student',
+    'quiz',
+    'teacher',
     'sweetify',
     'widget_tweaks',
     'hitcount',
@@ -77,6 +80,7 @@ SOCIAL_AUTH_GOOGLE_SECRET = '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'
 # allauth setting
 
 SITE_ID = 1
+
 # SOCIALACCOUNT_EMAIL_VERIFIATION = False
 # ACCOUNT_AUTHENTICATION_METHOD ='username_email'
 # ACCOUNT_CONFIRM_EMAIL_ON_GET = True
@@ -151,11 +155,12 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CSRF_COOKIE_SECURE=False
 
 ROOT_URLCONF = 'school.urls'
 
@@ -179,7 +184,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'school.wsgi.application'
 
 
-# Database
+
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 PROJECT_PATH =os.path.dirname(os.path.abspath(__file__))
 DATABASES = {
@@ -228,20 +233,20 @@ USE_TZ = True
 
 # ADDITIONAL SITE SECURITY
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
-SECURE_BROWSER_XSS_FILTER = True
-X_FRAME_OPTIONS = 'DENY'
-SECURE_SSL_REDIDERECT = True
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SESSION_COOKIES_SECURE = True
-SECURE_FRAME_DENY = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIES_HTTPONLY = True
+# SECURE_BROWSER_XSS_FILTER = True
+# X_FRAME_OPTIONS = 'DENY'
+# SECURE_SSL_REDIDERECT = True
+# SECURE_HSTS_SECONDS = 3600
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SESSION_COOKIES_SECURE = True
+# SECURE_FRAME_DENY = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIES_HTTPONLY = True
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 

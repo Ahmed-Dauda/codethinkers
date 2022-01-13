@@ -41,6 +41,10 @@ border: 1px dotted rgb(16, 2, 37);;
   {% empty %}
   <h1 class="card text-center text-danger">No Courses Available Yet. CHECK LATER</h1>
   {% endfor %}
+  <hr>
+  <h3>After completion of the Topics, take Exam</h3>
+  <h1 class="card text-center text-danger"><a href="{% url 'student:take-exam' %}">Take Exam</a></h1>
+  
 </div>
 </div>
 
